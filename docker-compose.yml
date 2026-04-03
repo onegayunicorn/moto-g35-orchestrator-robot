@@ -1,0 +1,74 @@
+version: '3.8'
+
+services:
+  quantum-reality-engine-v2:
+    image: nexus-biota/quantum-reality-engine:v2
+    networks:
+      - omni-sequence-network
+    ports:
+      - "8080:8080"
+
+  quantum-forge:
+    image: nexus-biota/quantum-forge:latest
+    networks:
+      - omni-sequence-network
+    ports:
+      - "8081:8081"
+
+  universal-ai-quantum-mesh:
+    image: universal-ai/quantum-mesh:latest
+    networks:
+      - omni-sequence-network
+    ports:
+      - "9090:9090"
+
+  deepseek-orchestration:
+    image: deepseek/orchestrator:latest
+    networks:
+      - omni-sequence-network
+    ports:
+      - "9091:9091"
+
+  bio-electric-synthesis-nexus:
+    image: bio-electric/nexus:latest
+    networks:
+      - omni-sequence-network
+    ports:
+      - "7070:7070"
+
+  quantum-firmware-moto-g35:
+    image: quantum-mesh/firmware-moto-g35:latest
+    networks:
+      - omni-sequence-network
+    ports:
+      - "8087:8087"
+
+  nexus-observatory:
+    image: nexus-biota/observatory:latest
+    networks:
+      - omni-sequence-network
+    ports:
+      - "80:80"
+
+  prometheus:
+    image: prom/prometheus:latest
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    networks:
+      - omni-sequence-network
+    ports:
+      - "9090:9090"
+
+  grafana:
+    image: grafana/grafana:latest
+    networks:
+      - omni-sequence-network
+    ports:
+      - "3000:3000"
+
+networks:
+  omni-sequence-network:
+    driver: bridge
+
+volumes:
+  omni-sequence-data:\n
