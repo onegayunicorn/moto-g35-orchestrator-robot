@@ -1,0 +1,1 @@
+MIT License with safety addendum (see root LICENSE.md)

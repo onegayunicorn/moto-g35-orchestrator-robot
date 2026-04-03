@@ -1,0 +1,41 @@
+# Android files
+*.apk
+*.ap_
+*.dex
+*.class
+build/
+.gradle/
+local.properties
+*.iml
+.idea/
+
+# Python files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+venv/
+.envrc
+
+# Hardware files
+*.bak
+*.log
+*.zip
+*.rar
+gerbers/
+*.csv.bak
+
+# OS files
+.DS_Store
+Thumbs.db
+*.tmp
+
+# Documentation files
+*.tmp.pdf
+*.log
+
+# Prototype files
+*.raw
+*.bin
+photos/
