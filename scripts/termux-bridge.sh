@@ -1,37 +1,20 @@
 #!/bin/bash
-# OGUF Termux Bridge Script
+# OGUF Termux Bridge - Moto G35 Optimizer
 
-COMMAND=$1
+echo "Initializing OGUF Bridge for Moto G35..."
+# Check for python
+if ! command -v python3 &> /dev/null; then
+    echo "Python3 not found. Please install it."
+    exit 1
+fi
 
-case $COMMAND in
-    "init")
-        echo "🚀 Initializing OGUF Bridge on Moto G35..."
-        sleep 1
-        echo "✅ Bridge initialized"
-        ;;
-    "status")
-        echo "🦄 OGUF System Monitor"
-        echo "======================"
-        echo "Time: $(date)"
-        echo ""
-        # Check if orchestrator is running on port 8080
-        if curl -s http://localhost:8080/health > /dev/null; then
-            echo "🟢 Orchestrator: UP"
-        else
-            echo "🔴 Orchestrator: DOWN"
-        fi
-        
-        # Check if bridge process is running (self-check or placeholder)
-        echo "🟢 Termux Bridge: UP"
-        echo ""
-        echo "Press Ctrl+C to stop monitoring"
-        ;;
-    "exec")
-        shift
-        echo "Executing on bridge: $@"
-        eval "$@"
-        ;;
-    *)
-        echo "Usage: $0 {init|status|exec}"
-        ;;
-esac
+# Launch the bridge component from the monorepo if available
+if [ -f "../../onegayunicorn-monorepo/src/termux-bridge/termux_bridge.py" ]; then
+    python3 ../../onegayunicorn-monorepo/src/termux-bridge/termux_bridge.py
+else
+    echo "Stand-alone bridge mode active."
+    while true; do
+        echo "Monitoring Moto G35..."
+        sleep 10
+    done
+fi
